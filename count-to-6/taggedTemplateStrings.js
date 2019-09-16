@@ -13,7 +13,6 @@ console.log(html`<b>${process.argv[2]} says</b>: "${process.argv[3]}"`);
 
 function html(splitString, name, phrase) {
     let newItems = ["", ""];
-    let output = "";
 
     [name, phrase].forEach((item, index) => {
         item.split('').forEach((char) => {
@@ -22,10 +21,11 @@ function html(splitString, name, phrase) {
         });
     });
 
-    splitString.forEach((item, index) =>{
-        output += item;
-        if (index != splitString.length - 1)
-            output += newItems[index];
+    let output= splitString.reduce((accumulator, next, index) =>{
+        if (index < splitString.length)
+            accumulator += newItems[index - 1];
+        accumulator += next;
+        return accumulator;
     })
     return output;
 }
