@@ -4,7 +4,7 @@ var equivalencies = {
     "<" : "&lt;",
     ">" : "&gt;",
     "&" : "&amp;"
-}
+};
 
 console.log(html`<b>${process.argv[2]} says</b>: "${process.argv[3]}"`);
 
@@ -17,7 +17,6 @@ function html(splitString, name, phrase) {
     [name, phrase].forEach((item, index) => {
         item.split('').forEach((char) => {
             newItems[index] += equivalencies[char] || char;
-            //console.log(equivalencies[char]);
         });
     });
 
@@ -26,6 +25,7 @@ function html(splitString, name, phrase) {
             accumulator += newItems[index - 1];
         accumulator += next;
         return accumulator;
-    })
+    });
+
     return output;
 }
