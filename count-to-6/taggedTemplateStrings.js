@@ -20,7 +20,7 @@ function html(splitString, name, phrase) {
         });
     });
 
-    let output= splitString.reduce((accumulator, next, index) =>{
+    let output = splitString.reduce((accumulator, next, index) =>{
         if (index < splitString.length)
             accumulator += newItems[index - 1];
         accumulator += next;
